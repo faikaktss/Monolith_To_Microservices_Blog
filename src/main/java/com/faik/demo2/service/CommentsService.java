@@ -43,33 +43,8 @@ public class CommentsService {
     public void approveComment(Long id){
         Optional<Comment> comment = commentRepository.findById(id);
         if(comment.isPresent()){
-            Comment c = comment.get();
-            // Try to set the approval flag using reflection or common setter names so code compiles
-            try {
-                // Try fields first: "approved" or "isApproved"
-                java.lang.reflect.Field field;
-                try {
-                    field = c.getClass().getDeclaredField("approved");
-                } catch (NoSuchFieldException e1) {
-                    field = c.getClass().getDeclaredField("isApproved");
-                }
-                field.setAccessible(true);
-                field.setBoolean(c, true);
-            } catch (NoSuchFieldException | IllegalAccessException e) {
-                // If fields are not present or not accessible, try common setter method names
-                try {
-                    java.lang.reflect.Method m = c.getClass().getMethod("setIsApproved", boolean.class);
-                    m.invoke(c, true);
-                } catch (Exception ex1) {
-                    try {
-                        java.lang.reflect.Method m2 = c.getClass().getMethod("setApproved", boolean.class);
-                        m2.invoke(c, true);
-                    } catch (Exception ex2) {
-                        // Unable to set approval flag; ignore or consider logging
-                    }
-                }
-            }
-            commentRepository.save(c);
+            comment.get().setIsApproved(true);
+            commentRepository.save(comment.get());
         }
     }
 

@@ -51,4 +51,8 @@ public class Comment {
             isApproved = false;
         }
     }
+
+    public void setIsApproved(boolean approved) {
+        this.isApproved = approved;
+    }
 }
