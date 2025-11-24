@@ -2,17 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
+import Header  from './components/Header';
 import './App.css';
 
-// Pages (sayfaları daha sonra oluşturacağız)
-// import HomePage from './pages/HomePage';
-// import PostDetailPage from './pages/PostDetailPage';
-// import LoginPage from './pages/LoginPage';
-// import AdminDashboard from './pages/AdminDashboard';
-
-// Components
-// import Header from './components/Header';
-// import Footer from './components/Footer';
 
 function App() {
   const { isLoading, isLoggedIn } = useContext(AuthContext);
@@ -23,14 +15,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <Header /> */}
-      
+      <Header />
+
       <Routes>
         {/* Herkes Görebilir */}
-        {/* <Route path="/" element={<HomePage />} /> */}
+        { <Route path="/" element={<HomePage />} /> }
         {/* <Route path="/post/:id" element={<PostDetailPage />} /> */}
 
-        {/* Giriş Yapmayanlar İçin */}
         {!isLoggedIn && (
           <>
             {/* <Route path="/login" element={<LoginPage />} /> */}
@@ -38,7 +29,6 @@ function App() {
           </>
         )}
 
-        {/* Giriş Yapanlar İçin */}
         {isLoggedIn && (
           <>
             {/* <Route path="/create-post" element={<CreatePostPage />} /> */}
@@ -46,14 +36,12 @@ function App() {
           </>
         )}
 
-        {/* 404 Sayfası */}
         <Route path="*" element={<div>Sayfa Bulunamadı</div>} />
       </Routes>
 
-      {/* <Footer /> */}
     </BrowserRouter>
   );
-  
+
 }
 
 export default App;
