@@ -89,7 +89,7 @@ export const deleteData = async(endpoint) =>{
 }
 
 
-//Todo:Token olmadan giriş yapmak için bu fonksiyonu yazdım
+//Todo:Token olmadan giriş yapmak için bu f     onksiyonu yazdım
 export const loginRequest = async(endpoint,credentials) =>{
     try {
         const response = await fetch(`${API_BASE_URL}${endpoint}`,{
