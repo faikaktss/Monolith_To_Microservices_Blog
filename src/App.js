@@ -20,11 +20,11 @@ function App() {
       <Routes>
         {/* Herkes Görebilir */}
         { <Route path="/" element={<HomePage />} /> }
-        {/* <Route path="/post/:id" element={<PostDetailPage />} /> */}
+        { <Route path="/post/:id" element={<PostDetailPage />} /> }
 
         {!isLoggedIn && (
           <>
-            {/* <Route path="/login" element={<LoginPage />} /> */}
+            { <Route path="/login" element={<LoginPage />} /> }
             {/* <Route path="/register" element={<RegisterPage />} /> */}
           </>
         )}
